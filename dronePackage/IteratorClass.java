@@ -92,4 +92,9 @@ public class IteratorClass implements Iterator {
 		return l_exists;
 	}
 
+	public boolean moveTo(String a_itemId,Iterator a_iterator){
+		a_iterator.addElement(getElement(a_itemId));
+		return removeElement(a_itemId);
+	}
+
 }

@@ -24,4 +24,10 @@ public interface Base{
     void addOrder(String orderId, int a_dimension, Location a_coords);
 
     void flyToBase(String a_droneId);
+
+    String listOrders();
+
+    void addDrone(DroneClass drone);
+
+    Hangar exportHangar();
 }

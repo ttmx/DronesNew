@@ -18,6 +18,7 @@ public interface Iterator {
     int addElement(ManagedObject a_Object);
     boolean removeElement(String a_Identifier);
     boolean IdExists(String a_Identifier);
+    boolean moveTo(String a_itemId, Iterator a_iterator);
     int length();
 
 }

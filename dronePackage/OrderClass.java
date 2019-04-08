@@ -70,4 +70,9 @@ public class OrderClass implements Order, ManagedObject {
     public void setI_coords(Location i_coords) {
         this.i_coords = i_coords;
     }
+
+    public String prettyPrint() {
+    String l_toReturn = getObjectID() + "; " + getI_dimension() + "; " + getI_coords().prettyCoords();
+    return l_toReturn;
+    }
 }

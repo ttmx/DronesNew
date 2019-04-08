@@ -31,7 +31,10 @@ public class BaseClass implements Base, ManagedObject {
     @Override
     public void createDrone(String a_droneId, String a_droneType, int a_capacity, int a_range, Tower a_tower) {
         i_hangar.spawnDrone(a_droneId, a_droneType, a_capacity, a_range,a_tower);
-
+    }
+    
+    public void addDrone(DroneClass drone) {
+    i_hangar.addElement(drone);    
     }
 
     public void moveToServiceBay(String a_droneId) {
@@ -74,5 +77,16 @@ public class BaseClass implements Base, ManagedObject {
     public void flyToBase(String a_droneId) {
 
     }
-
+    
+    public String listOrders() {
+        i_orders.reset();
+        String l_toReturn = "";
+        while (i_orders.hasNext()) {
+            l_toReturn += ((OrderClass) i_orders.next()).prettyPrint() + "\n";
+        }
+        return l_toReturn;    
+    }
+    public Hangar exportHangar(){
+        return i_hangar;
+    }
 }

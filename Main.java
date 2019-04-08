@@ -72,16 +72,16 @@ public class Main {
                 listdronesFunction(a_scan);
                 break;
             case FLYTOBASE:
-                flytobaseFunction(a_scan);
+                flytobaseFunction(a_scan, a_tower);
                 break;
             case ADDORDER:
-                addorderFunction(a_scan);
+                addorderFunction(a_scan, a_tower);
                 break;
             case ORDER:
-                orderFunction(a_scan);
+                orderFunction(a_scan, a_tower);
                 break;
             case ALLORDERS:
-                allordersFunction(a_scan);
+                allordersFunction(a_scan, a_tower);
                 break;
             case DELIVER:
                 deliverFunction(a_scan);
@@ -192,20 +192,60 @@ public class Main {
 
     }
 
-    public static void flytobaseFunction(Scanner a_scan) {
-
+    public static void flytobaseFunction(Scanner a_scan, Tower a_tower) {
+    String a_originBaseId = a_scan.nextLine();
+    String a_droneId = a_scan.nextLine();
+    String a_destinationId = a_scan.nextLine();
+    int l_Result = a_tower.flyToBase(a_originBaseId, a_droneId, a_destinationId);
+    switch(l_Result) { 
+    case 0:
+        System.out.println(a_droneId + " flying from " + a_originBaseId + " to " + a_destinationId + ".");
+        break;
+    case 1:
+        System.out.println("Source base " +  a_originBaseId + " does not exist!");
+        break;
+    case 2:
+        System.out.println("Target base " + a_destinationId + " does not exist!");
+        break;
+    case 3:
+        System.out.println(a_droneId + " is not at " + a_originBaseId + "!");
+        break;
+    case 4:
+        System.out.println("Drone " + a_droneId + " cannot reach " + a_destinationId + "!");
+        break;
+    }
     }
 
-    public static void addorderFunction(Scanner a_scan) {
-
+    public static void addorderFunction(Scanner a_scan, Tower a_tower) {
+    String a_baseName = a_scan.nextLine();
+    String a_orderId = a_scan.nextLine();
+    int a_dimension = a_scan.nextInt();
+    Location l_coords = new Location(a_scan.nextInt(), a_scan.nextInt());
+    a_scan.nextLine();
+    int l_Return = a_tower.addOrder(a_baseName, a_orderId, a_dimension, l_coords);
+    switch(l_Return) {
+    case 0:
+        System.out.println("Order qeued for delivery.");
+        break;
+    case 1:
+        System.out.println("Source base " + a_baseName + " does not exist!");
+        break;
+    case 2:
+        System.out.println("Order " + a_orderId + " already registered!");
+        break;
+    case 3:
+        System.out.println("Order dimension must be a positive integer!");
+        break;            
+    }
     }
 
-    public static void orderFunction(Scanner a_scan) {
-
+    public static void orderFunction(Scanner a_scan, Tower a_tower) {
+    String a_baseName = a_scan.nextLine();
+    System.out.println(a_tower.listOrders(a_baseName));
     }
 
-    public static void allordersFunction(Scanner a_scan) {
-
+    public static void allordersFunction(Scanner a_scan, Tower a_tower) {
+    System.out.println(a_tower.listAllOrders());
     }
 
     public static void deliverFunction(Scanner a_scan) {

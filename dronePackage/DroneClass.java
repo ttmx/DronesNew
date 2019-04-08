@@ -1,18 +1,18 @@
 package dronePackage;
 
-public class DroneClass implements Drone , ManagedObject {
+public class DroneClass implements Drone, ManagedObject {
     String i_droneId;
     int i_capacity;
     int i_range;
     int i_fuel;
-    String a_droneType;
+    String i_droneType;
 
     @Override
     public void flyToBase() {
 
     }
 
-    public DroneClass(){
+    public DroneClass() {
 
     }
 
@@ -21,12 +21,12 @@ public class DroneClass implements Drone , ManagedObject {
 
     }
 
-    public DroneClass(String a_droneId,String a_droneType, int a_capacity, int a_range) {
+    public DroneClass(String a_droneId, String a_droneType, int a_capacity, int a_range) {
         this.i_droneId = a_droneId;
         this.i_capacity = a_capacity;
         this.i_range = a_range;
         this.i_fuel = a_range;
-        this.a_droneType = a_droneType;
+        this.i_droneType = a_droneType;
     }
 
     @Override
@@ -43,12 +43,17 @@ public class DroneClass implements Drone , ManagedObject {
     public String getObjectID() {
         return i_droneId;
     }
+
     @Override
-    public int getCapacity(){
+    public int getCapacity() {
         return i_capacity;
     }
 
-    public String prettyPrint()    {
+    public String prettyPrint() {
         return i_droneId + " " + i_capacity + " " + i_fuel;
+    }
+
+    public String droneType() {
+        return i_droneType;
     }
 }
