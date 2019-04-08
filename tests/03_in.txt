@@ -1,0 +1,33 @@
+listBases
+base
+0 0 Montijo
+listBases
+base
+234 432 Sacavem
+listBases
+base
+-32 -44 Outro sitio qualquer
+listBases
+base
+-23 44 Olivais
+base
+2345 -12 Expo
+listBases
+base
+0 0 Montijo
+base
+1 1 Montijo
+base
+0 0 Alcochete
+base
+234 432 Almada
+base
+32 32 Outro sitio qualquer
+base
+2345 -12 caparica
+base
+34432 32 Expo
+base
+56 67 outra
+listBases
+exit

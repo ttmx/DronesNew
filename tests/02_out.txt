@@ -1,0 +1,40 @@
+> There are no bases!
+> Base Montijo created at [0,0].
+> Montijo [0,0]
+The hangar is empty!
+The service bay is empty!
+> Base Sacavem created at [234,432].
+> Montijo [0,0]
+The hangar is empty!
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+> Base Outro sitio qualquer created at [-32,-44].
+> Montijo [0,0]
+The hangar is empty!
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+> Base Olivais created at [-23,44].
+> Base Expo created at [2345,-12].
+> Montijo [0,0]
+The hangar is empty!
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+> Bye!

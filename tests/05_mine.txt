@@ -1,0 +1,62 @@
+> Base Montijo created at [0,0].
+> Base Sacavem created at [234,432].
+> Base Outro sitio qualquer created at [-32,-44].
+> Base Olivais created at [-23,44].
+> Base Expo created at [2345,-12].
+> Montijo [0,0]
+The hangar is empty!
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+> Drone Lili01 created.
+> Drone Lili02 created.
+> Drone Lili03 created.
+> Drone gru01 created.
+> Drone gru02 created.
+> Montijo [0,0]
+Hangar: [Lili02 50 100]
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+Hangar: [Lili01 20 200]
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+Hangar: [Lili03 30 120, gru01 50 130, gru02 60 50]
+The service bay is empty!
+> Invalid range for a new drone!
+> Capacity has to be a positive integer!
+> Base Winterfell does not exist!
+> Drone gru01 already exists!
+> Drone gru01 already exists!
+> Invalid drone type!
+> Montijo [0,0]
+Hangar: [Lili02 50 100]
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+Hangar: [Lili01 20 200]
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+Hangar: [Lili03 30 120, gru01 50 130, gru02 60 50]
+The service bay is empty!
+> Bye!

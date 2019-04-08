@@ -1,0 +1,16 @@
+listBases
+base
+0 0 Montijo
+listBases
+base
+234 432 Sacavem
+listBases
+base
+-32 -44 Outro sitio qualquer
+listBases
+base
+-23 44 Olivais
+base
+2345 -12 Expo
+listBases
+exit

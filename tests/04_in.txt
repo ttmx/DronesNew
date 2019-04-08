@@ -1,0 +1,33 @@
+base
+0 0 Montijo
+base
+234 432 Sacavem
+base
+-32 -44 Outro sitio qualquer
+base
+-23 44 Olivais
+base
+2345 -12 Expo
+listBases
+drone
+Lili01
+Outro sitio qualquer
+sociable 20 200
+drone
+Lili02
+Montijo
+sociable 50 100
+drone
+Lili03
+Expo
+sociable 30 120
+drone
+gru01
+Expo
+hermit 50 130
+drone
+gru02
+Expo
+hermit 60 50
+listBases
+exit

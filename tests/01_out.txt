@@ -1,0 +1,56 @@
+> Unknown command. Type help to see available commands.
+> base - registers a new distribution base
+listBases - lists existing distribution bases
+drone - registers a new drone in a starting base
+service - service all grounded drones requiring service in a base
+swarm - creates a new swarm from free drones in a base
+swarmComponents - lists the drones within a swarm
+disband - disbands the whole swarm
+listDrones - lists all existing drones (and swarms)
+flyToBase - fly a drone (or swarm) to a base
+addOrder - add a new order to a base
+orders - lists all pending orders from a base
+allOrders - lists all pending orders from all bases
+deliver - deliver a package to a customer
+delivered - lists all delivered orders
+inTransit - lists all drones (and swarms) currently flying
+ticTac - advances the simulation clock n timestamps
+help - shows the available commands
+exit - terminates the execution of the program
+> base - registers a new distribution base
+listBases - lists existing distribution bases
+drone - registers a new drone in a starting base
+service - service all grounded drones requiring service in a base
+swarm - creates a new swarm from free drones in a base
+swarmComponents - lists the drones within a swarm
+disband - disbands the whole swarm
+listDrones - lists all existing drones (and swarms)
+flyToBase - fly a drone (or swarm) to a base
+addOrder - add a new order to a base
+orders - lists all pending orders from a base
+allOrders - lists all pending orders from all bases
+deliver - deliver a package to a customer
+delivered - lists all delivered orders
+inTransit - lists all drones (and swarms) currently flying
+ticTac - advances the simulation clock n timestamps
+help - shows the available commands
+exit - terminates the execution of the program
+> base - registers a new distribution base
+listBases - lists existing distribution bases
+drone - registers a new drone in a starting base
+service - service all grounded drones requiring service in a base
+swarm - creates a new swarm from free drones in a base
+swarmComponents - lists the drones within a swarm
+disband - disbands the whole swarm
+listDrones - lists all existing drones (and swarms)
+flyToBase - fly a drone (or swarm) to a base
+addOrder - add a new order to a base
+orders - lists all pending orders from a base
+allOrders - lists all pending orders from all bases
+deliver - deliver a package to a customer
+delivered - lists all delivered orders
+inTransit - lists all drones (and swarms) currently flying
+ticTac - advances the simulation clock n timestamps
+help - shows the available commands
+exit - terminates the execution of the program
+> Bye!
