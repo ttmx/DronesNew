@@ -4,7 +4,7 @@ public interface Base{
      * 
      * @return coordenates as Location object
      */
-    Location getCoords();
+    Location getCoords();n
     /**
      * 
      * @return base name as String
