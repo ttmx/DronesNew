@@ -68,9 +68,8 @@ public class BaseClass implements Base, ManagedObject {
         }
     }
 
-    public void addOrder(String order_Id, int a_dimension, Location a_coords)  {
-        OrderClass l_Order = new OrderClass(order_Id, a_dimension, a_coords);
-        i_orders.addElement(l_Order);
+    public void addOrder(OrderClass a_order)  {
+        i_orders.addElement(a_order);
    }
 
     @Override
@@ -88,5 +87,10 @@ public class BaseClass implements Base, ManagedObject {
     }
     public Hangar exportHangar(){
         return i_hangar;
+    }
+
+    @Override
+    public int getOrderLength() {
+        return i_orders.length();
     }
 }

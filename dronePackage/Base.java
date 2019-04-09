@@ -21,7 +21,7 @@ public interface Base{
 
     void moveToServiceBay(String a_droneId);
 
-    void addOrder(String orderId, int a_dimension, Location a_coords);
+    void addOrder(OrderClass a_order);
 
     void flyToBase(String a_droneId);
 
@@ -30,4 +30,6 @@ public interface Base{
     void addDrone(DroneClass drone);
 
     Hangar exportHangar();
+
+    int getOrderLength();
 }

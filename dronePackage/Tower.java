@@ -42,7 +42,9 @@ public interface Tower {
 
     String listAllOrders();
 
-    int deliverOrders(String a_destinationBaseId, String a_droneId, String a_orderId); 
+    int deliverOrders(String a_destinationBaseId, String a_droneId, String a_orderId);
+    
+    int addOrder(String a_baseName, String a_orderId, int a_dimension, Location a_coords);
 
     int makeSwarm(String a_baseId, String a_swarmId, String[] a_drones);
     

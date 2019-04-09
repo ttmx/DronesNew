@@ -241,28 +241,32 @@ public class TowerClass implements Tower {
         for (int i = 0; i < a_drones.length; i++) {
             l_hangar.moveTo(a_drones[i], l_toStickIn);
         }
-        Swarm l_swarm = new Swarm(l_toStickIn);
+        Swarm l_swarm = new Swarm(l_toStickIn,a_swarmId);
         i_swarms.addElement(l_swarm);
     }
 
-    /*public int addOrder(String a_baseName, String a_orderId, int dimension, Location a_coords) {
+    public int addOrder(String a_baseName, String a_orderId, int a_dimension, Location a_coords) {
         int l_Result;
         if(!i_bases.IdExists(a_baseName)) {
             l_Result = 1; // a_baseName does not exist
-        } else if() {
+        } else if(i_orders.IdExists(a_orderId)) {
             l_Result = 2; // a_orderId already exists   
         } else if(!(a_dimension > 0)) {
             l_Result = 3; // a_dimension is not a positive integer
         } else {
-            ((Base) i_bases.getElement(a_baseName)).addOrder( a_orderId, dimension, a_coords);
+            OrderClass l_add = new OrderClass(a_orderId, a_dimension, a_coords);
+            ((Base) i_bases.getElement(a_baseName)).addOrder(l_add);
             l_Result = 0;
         }
+        return l_Result;
     }
-*/
+
     public String listOrders(String a_baseName) {
         String l_toPrint = "";
-        if (i_bases.IdExists(a_baseName)) {
+        if (i_bases.IdExists(a_baseName) && ((Base) i_bases.next()).getOrderLength() > 0) {
             l_toPrint = ((Base) i_bases.getElement(a_baseName)).listOrders();
+        } else if(i_bases.IdExists(a_baseName) && ((Base) i_bases.next()).getOrderLength() == 0) {
+            l_toPrint = "There are no pending orders!";
         } else {
             l_toPrint = "Base " + a_baseName + " does not exist!";
         }
@@ -271,10 +275,10 @@ public class TowerClass implements Tower {
 
     public String listAllOrders() {
     String l_toPrint = "";
-    if() {
+    if(!(i_orders.length() == 0)) {
     while(i_bases.hasNext()) {
     l_toPrint += "Orders in " + ((Base) i_bases.next()).getBaseName() + ":" + "\n";
-    if() {
+    if(((Base) i_bases.next()).getOrderLength() > 0) {
     l_toPrint += ((Base) i_bases.next()).listOrders();    
     } else {
     l_toPrint += "There are no pending orders in " + ((Base) i_bases.next()).getBaseName() + "." + "\n";   
@@ -286,13 +290,21 @@ public class TowerClass implements Tower {
     return l_toPrint;    
     }
 
-    public int deliverOrders(String a_destinationBaseId, String a_droneId, String a_orderId) {
+    public int deliverOrders(String a_originBaseId, String a_droneId, String a_orderId) {
         int l_Return;
-        if (!i_bases.IdExists(a_destinationBaseId)) {
+        if (!i_bases.IdExists(a_originBaseId)) {
             l_Return = 1;
-        } else if (!((Base) i_bases.getElement(a_destinationBaseId)).droneIdExists(a_droneId)) {
+        } else if (!((Base) i_bases.getElement(a_originBaseId)).droneIdExists(a_droneId)) {
             l_Return = 2;
-        } else if (s)
+        } else if (i_orders.length() == 0) {
+            l_Return = 3;    
+        } else if (((Base) i_bases.getElement(a_originBaseId)).getCoords().distanceTo(((OrderClass) i_orders.getElement(a_orderId)).getI_coords()) >= ((Drone) i_drones.getElement(a_droneId)).getFuel()) {
+            l_Return = 4;
+        } else if(((OrderClass) i_orders.getElement(a_orderId)).getI_dimension() > ((Drone) i_drones.getElement(a_droneId)).getCapacity()) {
+            l_Return = 5;
+        } else {
+            l_Return = 0;
+        }
             return l_Return;
     }
 

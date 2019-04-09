@@ -1,4 +1,4 @@
-> > Base Montijo created at [0,0].
+> Base Montijo created at [0,0].
 > Base Sacavem created at [234,432].
 > Base Outro sitio qualquer created at [-32,-44].
 > Base Olivais created at [-23,44].
@@ -8,4 +8,11 @@
 > Drone Lili03 created.
 > Drone gru01 created.
 > Drone gru02 created.
+> > Invalid range for a new drone!
+> Capacity has to be a positive integer!
+> Base Winterfell does not exist!
+> Drone gru01 already exists!
+> Drone gru01 already exists!
+> Invalid drone type!
+> Drone Luke created.
 > > Bye!
