@@ -1,11 +1,18 @@
-> > Base Montijo created at [0,0].
+> There are no drones!
+> Base Montijo created at [0,0].
 > Base Sacavem created at [234,432].
 > Base Outro sitio qualquer created at [-32,-44].
 > Base Olivais created at [-23,44].
 > Base Expo created at [2345,-12].
-> > Drone Lili01 created.
+> There are no drones!
+> Drone Lili01 created.
 > Drone Lili02 created.
 > Drone Lili03 created.
 > Drone gru01 created.
 > Drone gru02 created.
-> > Bye!
+> Lili01
+Lili02
+Lili03
+gru01
+gru02
+> Bye!

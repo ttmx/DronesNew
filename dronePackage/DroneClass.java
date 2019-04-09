@@ -24,9 +24,11 @@ public class DroneClass implements Drone, ManagedObject {
     public DroneClass() {
 
     }
+    
     public boolean isFlying(){
         return i_isFlying;
     }
+
     @Override
     public void addDelivery(String a_orderID) {
 

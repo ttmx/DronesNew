@@ -311,4 +311,19 @@ public class TowerClass implements Tower {
     public Object extraError(){
         return i_extraError;
     }
+    public Iterator exportIte(String a_toExportName){
+        Iterator a_toExport = null;
+        switch(a_toExportName){
+            case "bases":
+            a_toExport = i_bases;
+            break;
+            case "drones":
+            a_toExport = i_drones;
+            break;
+            case "swarms":
+            a_toExport = i_swarms;
+            break;
+        }
+        return a_toExport;
+    }
 }

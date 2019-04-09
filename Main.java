@@ -69,7 +69,7 @@ public class Main {
                 disbandFunction(a_scan);
                 break;
             case LISTDRONES:
-                listdronesFunction(a_scan);
+                listdronesFunction(a_scan, a_tower);
                 break;
             case FLYTOBASE:
                 flytobaseFunction(a_scan, a_tower);
@@ -84,7 +84,7 @@ public class Main {
                 allordersFunction(a_scan, a_tower);
                 break;
             case DELIVER:
-                deliverFunction(a_scan);
+                deliverFunction(a_scan, a_tower);
                 break;
             case DELIVERED:
                 deliveredFunction(a_scan);
@@ -203,13 +203,13 @@ public class Main {
             System.out.println("Cannot add drone " + ((String) a_tower.extraError()) + " twice!");
             break;
         case 4:
-        System.out.println("Cannot add hermit drone " +a_tower.extraError()+"!");
+            System.out.println("Cannot add hermit drone " + a_tower.extraError() + "!");
             break;
         case 5:
-        System.out.println("Drone "+a_tower.extraError()+" is not available in this base!");
+            System.out.println("Drone " + a_tower.extraError() + " is not available in this base!");
             break;
         case 6:
-        System.out.println("Swarm "+a_tower.extraError()+" already exists!");
+            System.out.println("Swarm " + a_tower.extraError() + " already exists!");
             break;
         }
     }
@@ -222,8 +222,16 @@ public class Main {
 
     }
 
-    public static void listdronesFunction(Scanner a_scan) {
-
+    public static void listdronesFunction(Scanner a_scan, Tower a_tower) {
+        Iterator l_droneIte = a_tower.exportIte("drones");
+        l_droneIte.reset();
+        if (l_droneIte.hasNext()) {
+            while (l_droneIte.hasNext()) {
+                System.out.println(l_droneIte.next().getObjectID());
+            }
+        }else{
+            System.out.println("There are no drones!");
+        }
     }
 
     public static void flytobaseFunction(Scanner a_scan, Tower a_tower) {
@@ -282,7 +290,7 @@ public class Main {
         System.out.println(a_tower.listAllOrders());
     }
 
-    public static void deliverFunction(Scanner a_scan) {
+    public static void deliverFunction(Scanner a_scan, Tower a_tower) {
 
     }
 

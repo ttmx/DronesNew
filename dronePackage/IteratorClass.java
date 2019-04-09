@@ -2,7 +2,6 @@ package dronePackage;
 
 public class IteratorClass implements Iterator {
 	ManagedObject[] i_objects;
-
 	/**
 	 * Length of array, starting at 1
 	 */
