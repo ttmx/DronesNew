@@ -9,5 +9,6 @@ String droneType();
 void addDelivery(String a_orderID);
 
 String prettyPrint();
+boolean isFlying();
 
 }

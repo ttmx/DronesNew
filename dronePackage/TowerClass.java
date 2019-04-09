@@ -5,7 +5,7 @@ public class TowerClass implements Tower {
     Iterator i_drones;
     Iterator i_orders;
     Iterator i_swarms;
-
+    Object i_extraError;
     int i_baseNumber;
 
     public TowerClass() {
@@ -176,8 +176,6 @@ public class TowerClass implements Tower {
 
     public int makeSwarm(String a_baseId, String a_swarmId, String[] a_drones) {
         int l_toReturn;
-        String l_droneName;
-        String l_droneName2;
         boolean l_hasCopy = false;
         boolean hasHermit = false;
         Base l_base = (Base) i_bases.getElement(a_baseId);
@@ -185,11 +183,11 @@ public class TowerClass implements Tower {
             for (int a = 0; a < a_drones.length; a++) {
                 if (a_drones[i].equals(a_drones[a]) && a != i) {
                     l_hasCopy = true;
+                    i_extraError = a_drones[a];
                     break;
                 }
             }
         }
-        Iterator a_drones2 = new IteratorClass();
         if (!i_bases.IdExists(a_baseId)) {
             l_toReturn = 1;
         } else if (a_drones.length < 2) {
@@ -202,6 +200,7 @@ public class TowerClass implements Tower {
                 if (l_base.droneIdExists(a_drones[i])) {
                     l_drone = (Drone) i_drones.getElement(a_drones[i]);
                     if (l_drone.droneType().equals("hermit")) {
+                        i_extraError = a_drones[i];
                         hasHermit = true;
                     }
                 }
@@ -209,17 +208,44 @@ public class TowerClass implements Tower {
             if (hasHermit) {
                 l_toReturn = 4;
             } else {
-                if (l_base.exportHangar().IdExists(a_drones)) {
+                boolean l_unavailable = false;
+                for (int i = 0; i < a_drones.length; i++) {
 
+                    // Special order of operations lets second condition only be run if a drone does
+                    // exist
+                    if ((!l_base.droneIdExists(a_drones[i]))|| ((Drone) l_base.exportHangar().getElement(a_drones[i])).isFlying()) {
+                        i_extraError = a_drones[i];
+                        l_unavailable = true;
+                        break;
+                    }
+                }
+                if (l_unavailable) {
+                    l_toReturn = 5;
+                } else if (i_swarms.IdExists(a_swarmId)) {
+                    l_toReturn = 6;
+                } else {
+                    l_toReturn = 0;
+                    actualDroneAdd(a_baseId, a_swarmId, a_drones);
                 }
             }
 
         }
+        return l_toReturn;
     }
 
+    private void actualDroneAdd(String a_baseId, String a_swarmId, String[] a_drones) {
+        Base l_base = (Base) i_bases.getElement(a_baseId);
+        Hangar l_hangar = l_base.exportHangar();
+        Iterator l_toStickIn = new IteratorClass();
+
+        for (int i = 0; i < a_drones.length; i++) {
+            l_hangar.moveTo(a_drones[i], l_toStickIn);
+        }
+        Swarm l_swarm = new Swarm(l_toStickIn);
+        i_swarms.addElement(l_swarm);
     }
 
-    public int addOrder(String a_baseName, String a_orderId, int dimension, Location a_coords) {
+    /*public int addOrder(String a_baseName, String a_orderId, int dimension, Location a_coords) {
         int l_Result;
         if(!i_bases.IdExists(a_baseName)) {
             l_Result = 1; // a_baseName does not exist
@@ -231,8 +257,8 @@ public class TowerClass implements Tower {
             ((Base) i_bases.getElement(a_baseName)).addOrder( a_orderId, dimension, a_coords);
             l_Result = 0;
         }
-        }
-
+    }
+*/
     public String listOrders(String a_baseName) {
         String l_toPrint = "";
         if (i_bases.IdExists(a_baseName)) {
@@ -268,5 +294,9 @@ public class TowerClass implements Tower {
             l_Return = 2;
         } else if (s)
             return l_Return;
+    }
+
+    public Object extraError(){
+        return i_extraError;
     }
 }

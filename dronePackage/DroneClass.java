@@ -6,18 +6,10 @@ public class DroneClass implements Drone, ManagedObject {
     int i_range;
     int i_fuel;
     String i_droneType;
+    boolean i_isFlying;
 
     @Override
     public void flyToBase() {
-
-    }
-
-    public DroneClass() {
-
-    }
-
-    @Override
-    public void addDelivery(String a_orderID) {
 
     }
 
@@ -27,6 +19,17 @@ public class DroneClass implements Drone, ManagedObject {
         this.i_range = a_range;
         this.i_fuel = a_range;
         this.i_droneType = a_droneType;
+    }
+
+    public DroneClass() {
+
+    }
+    public boolean isFlying(){
+        return i_isFlying;
+    }
+    @Override
+    public void addDelivery(String a_orderID) {
+
     }
 
     @Override

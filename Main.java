@@ -60,7 +60,7 @@ public class Main {
                 serviceFunction(a_scan, a_tower);
                 break;
             case SWARM:
-                swarmFunction(a_scan);
+                swarmFunction(a_scan, a_tower);
                 break;
             case SWARMCOMPONENTS:
                 swarmcomponentsFunction(a_scan);
@@ -134,7 +134,8 @@ public class Main {
     public static void droneFunction(Scanner a_scan, Tower a_tower) {
         String i_droneName = a_scan.nextLine();
         String i_baseName = a_scan.nextLine();
-        int errorCode = a_tower.makeDrone(i_droneName, i_baseName, a_scan.next(), a_scan.nextInt(), a_scan.nextInt(),a_tower);
+        int errorCode = a_tower.makeDrone(i_droneName, i_baseName, a_scan.next(), a_scan.nextInt(), a_scan.nextInt(),
+                a_tower);
         a_scan.nextLine();
         switch (errorCode) {
         case 0:
@@ -159,25 +160,58 @@ public class Main {
     }
 
     public static void serviceFunction(Scanner a_scan, Tower a_tower) {
-    String a_baseName = a_scan.nextLine();
-    int a_range = a_scan.nextInt();
-    a_scan.nextLine();
-    int l_Return = a_tower.moveToServiceBay(a_baseName, a_range);
-    switch(l_Return) {
-    case 0:
-        System.out.println();        
-        break;
-    case 1:
-        System.out.println("No drones were sent to the service station!");
-        break;
-    case 2:
-        System.out.println("Base " + a_baseName + " does not exist!");
-        break;   
-    }
+        String a_baseName = a_scan.nextLine();
+        int a_range = a_scan.nextInt();
+        a_scan.nextLine();
+        int l_Return = a_tower.moveToServiceBay(a_baseName, a_range);
+        switch (l_Return) {
+        case 0:
+            System.out.println();
+            break;
+        case 1:
+            System.out.println("No drones were sent to the service station!");
+            break;
+        case 2:
+            System.out.println("Base " + a_baseName + " does not exist!");
+            break;
+        }
     }
 
-    public static void swarmFunction(Scanner a_scan) {
-
+    public static void swarmFunction(Scanner a_scan, Tower a_tower) {
+        /*
+         * swarm Lajes swarm05 2 sociable02 sociable03
+         */
+        String l_base = a_scan.nextLine();
+        String l_swarmId = a_scan.nextLine();
+        int l_droneNum = a_scan.nextInt();
+        a_scan.nextLine();
+        String[] l_strArr = new String[l_droneNum];
+        for (int i = 0; i < l_droneNum; i++) {
+            l_strArr[i] = a_scan.nextLine();
+        }
+        int errorCode = a_tower.makeSwarm(l_base, l_swarmId, l_strArr);
+        switch (errorCode) {
+        case 0:
+            break;
+        case 1:
+            System.out.println("Base " + l_base + " does not exist!");
+            break;
+        case 2:
+            System.out.println("Swarm must have at least two drones!");
+            break;
+        case 3:
+            System.out.println("Cannot add drone " + ((String) a_tower.extraError()) + " twice!");
+            break;
+        case 4:
+        System.out.println("Cannot add hermit drone " +a_tower.extraError()+"!");
+            break;
+        case 5:
+        System.out.println("Drone "+a_tower.extraError()+" is not available in this base!");
+            break;
+        case 6:
+        System.out.println("Swarm "+a_tower.extraError()+" already exists!");
+            break;
+        }
     }
 
     public static void swarmcomponentsFunction(Scanner a_scan) {
@@ -193,59 +227,59 @@ public class Main {
     }
 
     public static void flytobaseFunction(Scanner a_scan, Tower a_tower) {
-    String a_originBaseId = a_scan.nextLine();
-    String a_droneId = a_scan.nextLine();
-    String a_destinationId = a_scan.nextLine();
-    int l_Result = a_tower.flyToBase(a_originBaseId, a_droneId, a_destinationId);
-    switch(l_Result) { 
-    case 0:
-        System.out.println(a_droneId + " flying from " + a_originBaseId + " to " + a_destinationId + ".");
-        break;
-    case 1:
-        System.out.println("Source base " +  a_originBaseId + " does not exist!");
-        break;
-    case 2:
-        System.out.println("Target base " + a_destinationId + " does not exist!");
-        break;
-    case 3:
-        System.out.println(a_droneId + " is not at " + a_originBaseId + "!");
-        break;
-    case 4:
-        System.out.println("Drone " + a_droneId + " cannot reach " + a_destinationId + "!");
-        break;
-    }
+        String a_originBaseId = a_scan.nextLine();
+        String a_droneId = a_scan.nextLine();
+        String a_destinationId = a_scan.nextLine();
+        int l_Result = a_tower.flyToBase(a_originBaseId, a_droneId, a_destinationId);
+        switch (l_Result) {
+        case 0:
+            System.out.println(a_droneId + " flying from " + a_originBaseId + " to " + a_destinationId + ".");
+            break;
+        case 1:
+            System.out.println("Source base " + a_originBaseId + " does not exist!");
+            break;
+        case 2:
+            System.out.println("Target base " + a_destinationId + " does not exist!");
+            break;
+        case 3:
+            System.out.println(a_droneId + " is not at " + a_originBaseId + "!");
+            break;
+        case 4:
+            System.out.println("Drone " + a_droneId + " cannot reach " + a_destinationId + "!");
+            break;
+        }
     }
 
     public static void addorderFunction(Scanner a_scan, Tower a_tower) {
-    String a_baseName = a_scan.nextLine();
-    String a_orderId = a_scan.nextLine();
-    int a_dimension = a_scan.nextInt();
-    Location l_coords = new Location(a_scan.nextInt(), a_scan.nextInt());
-    a_scan.nextLine();
-    int l_Return = a_tower.addOrder(a_baseName, a_orderId, a_dimension, l_coords);
-    switch(l_Return) {
-    case 0:
-        System.out.println("Order qeued for delivery.");
-        break;
-    case 1:
-        System.out.println("Source base " + a_baseName + " does not exist!");
-        break;
-    case 2:
-        System.out.println("Order " + a_orderId + " already registered!");
-        break;
-    case 3:
-        System.out.println("Order dimension must be a positive integer!");
-        break;            
-    }
+        String a_baseName = a_scan.nextLine();
+        String a_orderId = a_scan.nextLine();
+        int a_dimension = a_scan.nextInt();
+        Location l_coords = new Location(a_scan.nextInt(), a_scan.nextInt());
+        a_scan.nextLine();
+        int l_Return = a_tower.addOrder(a_baseName, a_orderId, a_dimension, l_coords);
+        switch (l_Return) {
+        case 0:
+            System.out.println("Order qeued for delivery.");
+            break;
+        case 1:
+            System.out.println("Source base " + a_baseName + " does not exist!");
+            break;
+        case 2:
+            System.out.println("Order " + a_orderId + " already registered!");
+            break;
+        case 3:
+            System.out.println("Order dimension must be a positive integer!");
+            break;
+        }
     }
 
     public static void orderFunction(Scanner a_scan, Tower a_tower) {
-    String a_baseName = a_scan.nextLine();
-    System.out.println(a_tower.listOrders(a_baseName));
+        String a_baseName = a_scan.nextLine();
+        System.out.println(a_tower.listOrders(a_baseName));
     }
 
     public static void allordersFunction(Scanner a_scan, Tower a_tower) {
-    System.out.println(a_tower.listAllOrders());
+        System.out.println(a_tower.listAllOrders());
     }
 
     public static void deliverFunction(Scanner a_scan) {
