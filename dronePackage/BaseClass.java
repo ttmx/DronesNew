@@ -73,11 +73,6 @@ public class BaseClass implements Base, ManagedObject {
         i_orders.addElement(a_order);
     }
 
-    @Override
-    public void flyToBase(String a_droneId) {
-
-    }
-
     public String listOrders() {
         i_orders.reset();
         String l_toReturn = "";

@@ -23,8 +23,6 @@ public interface Base{
 
     void addOrder(OrderClass a_order);
 
-    void flyToBase(String a_droneId);
-
     String listOrders();
 
     void addDrone(DroneClass drone);

@@ -81,4 +81,7 @@ public class DroneClass implements Drone, ManagedObject {
     public void land(){
         i_isFlying = false;
     }
+    public void removeFuel(int i_delta){
+        i_fuel -= i_delta;
+    }
 }

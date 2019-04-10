@@ -170,9 +170,7 @@ public class TowerClass implements Tower {
                           // a_DestinationBase
         } else {
             ((Drone) i_drones.getElement(a_droneId)).goSwitchBaseroo();
-            ((Base) i_bases.getElement(a_destinationBaseId)).addDrone(((DroneClass) i_drones.getElement(a_droneId)));
-            ((Base) i_bases.getElement(a_originBaseId)).flyToBase(a_droneId);
-            i_fc.newFlight(a_originBaseId, a_droneId, a_destinationBaseId,Base2BaseDistance(a_originBaseId, a_destinationBaseId));
+            i_fc.newFlight(a_originBaseId, a_droneId, a_destinationBaseId,(int)Math.ceil(Base2BaseDistance(a_originBaseId, a_destinationBaseId)/10f));
             l_Result = 0;
         }
         return l_Result;

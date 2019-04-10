@@ -24,4 +24,6 @@ public interface Drone {
     void goSwitchBaseroo();
 
     String getObjectID();
+
+    void removeFuel(int a_delta);
 }

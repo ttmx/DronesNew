@@ -31,10 +31,13 @@ public class FlightControl {
      */
     public void newFlight(String a_departure, String a_droneId, String a_destination, int a_duration) {
         i_flightIte.addElement(new FlightPattern(a_droneId, a_destination, i_tick + a_duration));
+        ((DroneClass)((Base)i_bases.getElement(a_departure)).exportHangar().getElement(a_droneId)).removeFuel(a_duration*10);
         ((Base)i_bases.getElement(a_departure)).exportHangar().removeElement(a_droneId);
+        
     }
     public void newFlight(String a_departure, String a_droneId, String a_destination, int a_duration,OrderClass a_order) {
         i_flightIte.addElement(new FlightPattern(a_droneId, a_destination, i_tick + a_duration,a_order));
+        ((DroneClass)((Base)i_bases.getElement(a_departure)).exportHangar().getElement(a_droneId)).removeFuel(a_duration*10);
         ((Base)i_bases.getElement(a_departure)).exportHangar().removeElement(a_droneId);
     }
 
