@@ -63,10 +63,10 @@ public class Main {
                 swarmFunction(a_scan, a_tower);
                 break;
             case SWARMCOMPONENTS:
-                swarmcomponentsFunction(a_scan);
+                swarmcomponentsFunction(a_scan, a_tower);
                 break;
             case DISBAND:
-                disbandFunction(a_scan);
+                disbandFunction(a_scan, a_tower);
                 break;
             case LISTDRONES:
                 listdronesFunction(a_scan, a_tower);
@@ -192,7 +192,7 @@ public class Main {
         int errorCode = a_tower.makeSwarm(l_base, l_swarmId, l_strArr);
         switch (errorCode) {
         case 0:
-            
+
             System.out.println(l_swarmId + " created.");
             break;
         case 1:
@@ -211,16 +211,44 @@ public class Main {
             System.out.println("Drone " + a_tower.extraError() + " is not available in this base!");
             break;
         case 6:
-            System.out.println("Swarm " + a_tower.extraError() + " already exists!");
+            System.out.println("Swarm " + l_swarmId + " already exists!");
             break;
         }
     }
 
-    public static void swarmcomponentsFunction(Scanner a_scan) {
-
+    public static void swarmcomponentsFunction(Scanner a_scan, Tower a_tower) {
+        String l_droneName = a_scan.nextLine();
+        Iterator l_drones = a_tower.exportIte("drones");
+        DroneClass l_possibleSwarm = (DroneClass) l_drones.getElement(l_droneName);
+        if (l_possibleSwarm == null) {
+            System.out.println(l_droneName + " is not a swarm!");
+        } else {
+            if (l_possibleSwarm.droneType().equals("swarm")) {
+                Iterator l_sdIte = ((Swarm) l_possibleSwarm).exportIte();
+                l_sdIte.reset();
+                while (l_sdIte.hasNext()) {
+                    System.out.println(l_sdIte.next().getObjectID());
+                }
+                System.out.println(l_possibleSwarm.getCapacity() + " " + l_possibleSwarm.getFuel());
+            }
+        }
     }
 
-    public static void disbandFunction(Scanner a_scan) {
+    public static void disbandFunction(Scanner a_scan, Tower a_tower) {
+        String l_baseId = a_scan.nextLine();
+        String l_droneId = a_scan.nextLine();
+        int l_errorCode = a_tower.disband(l_baseId, l_droneId);
+        switch (l_errorCode) {
+        case 0:
+            System.out.println(l_droneId + " disbanded.");
+            break;
+        case 1:
+            System.out.println("Base " + l_baseId + " does not exist!");
+            break;
+        case 2:
+            System.out.println(l_droneId + " is not at " + l_baseId + "!");
+            break;
+        }
 
     }
 
@@ -304,9 +332,9 @@ public class Main {
         if (!(l_orders.length() == 0)) {
             l_bases.reset();
             while (l_bases.hasNext()) {
-                Base l_base = (Base)l_bases.next();
-                if(l_base.getOrderLength()>0)
-                l_toPrint += "Orders in " + l_base.getBaseName() + ":" + "\n";
+                Base l_base = (Base) l_bases.next();
+                if (l_base.getOrderLength() > 0)
+                    l_toPrint += "Orders in " + l_base.getBaseName() + ":" + "\n";
                 if (l_base.getOrderLength() > 0) {
                     l_toPrint += l_base.listOrders();
                 } else {
@@ -319,6 +347,8 @@ public class Main {
         System.out.print(l_toPrint);
     }
 
+    // Function takes in 3 arguments, origin base, drone id and order id, and sets a
+    // delivery action on that "package"
     public static void deliverFunction(Scanner a_scan, Tower a_tower) {
         String a_originBaseId = a_scan.nextLine();
         String a_droneId = a_scan.nextLine();

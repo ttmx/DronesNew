@@ -7,12 +7,14 @@ public class TowerClass implements Tower {
     Iterator i_swarms;
     Object i_extraError;
     int i_baseNumber;
+    FlightControl i_fc;
 
     public TowerClass() {
         i_bases = new IteratorClass();
         i_drones = new IteratorClass();
         i_orders = new IteratorClass();
         i_swarms = new IteratorClass();
+        i_fc = new FlightControl();
     }
 
     @Override
@@ -160,7 +162,7 @@ public class TowerClass implements Tower {
             l_Result = 1; // a_OriginBase does not exist
         } else if (!i_bases.IdExists(a_destinationBaseId)) {
             l_Result = 2; // a_DestinationBase does not exist
-        } else if (!DroneInBase(a_originBaseId, a_droneId)) {
+        } else if (!DroneInBase(a_droneId, a_originBaseId)) {
             l_Result = 3; // a_droneId does not exist
         } else if (!(Base2BaseDistance(a_originBaseId, a_destinationBaseId) < ((Drone) i_drones.getElement(a_droneId))
                 .getRange())) {
@@ -175,6 +177,11 @@ public class TowerClass implements Tower {
         return l_Result;
     }
 
+    /**
+     * @param a_baseId  String with base id to place swarm at
+     * @param a_swarmId To be created swarm id
+     * @param a_drones  array of names of drones to place in swarm
+     */
     public int makeSwarm(String a_baseId, String a_swarmId, String[] a_drones) {
         int l_toReturn;
         boolean l_hasCopy = false;
@@ -199,6 +206,7 @@ public class TowerClass implements Tower {
             for (int i = 0; i < a_drones.length; i++) {
                 Drone l_drone;
                 if (l_base.droneIdExists(a_drones[i])) {
+
                     l_drone = (Drone) i_drones.getElement(a_drones[i]);
                     if (l_drone.droneType().equals("hermit")) {
                         i_extraError = a_drones[i];
@@ -223,7 +231,7 @@ public class TowerClass implements Tower {
                 }
                 if (l_unavailable) {
                     l_toReturn = 5;
-                } else if (i_swarms.IdExists(a_swarmId)) {
+                } else if (i_drones.IdExists(a_swarmId)) {
                     l_toReturn = 6;
                 } else {
                     l_toReturn = 0;
@@ -243,18 +251,48 @@ public class TowerClass implements Tower {
         for (int i = 0; i < a_drones.length; i++) {
             if (!(((DroneClass) l_hangar.getElement(a_drones[i])).droneType().equals("swarm"))) {
                 l_hangar.moveTo(a_drones[i], l_toStickIn);
-            }else{
+            } else {
                 Swarm l_swarmyBoy = (Swarm) l_hangar.getElement(a_drones[i]);
                 l_swarmyBoy.exportIte().reset();
-                while(l_swarmyBoy.exportIte().hasNext()){
+                while (l_swarmyBoy.exportIte().hasNext()) {
                     l_toStickIn.addElement(l_swarmyBoy.exportIte().next());
                 }
+                l_hangar.removeElement(l_swarmyBoy.getObjectID());
+                i_drones.removeElement(l_swarmyBoy.getObjectID());
+                i_drones.removeElement(l_swarmyBoy.getObjectID());
+
             }
         }
         l_hangar.reset();
         Swarm l_swarm = new Swarm(l_toStickIn, a_swarmId);
-        i_swarms.addElement(l_swarm);
+        i_drones.addElement(l_swarm);
         l_hangar.addElement(l_swarm);
+        i_swarms.addElement(l_swarm);
+    }
+
+    public int disband(String a_baseId, String a_droneId) {
+        int l_toReturn;
+        if (!i_bases.IdExists(a_baseId)) {
+            l_toReturn = 1;
+        } else {
+            
+            if (!(((Base) i_bases.getElement(a_baseId)).droneIdExists(a_droneId)
+                && ((Drone) ((Base) i_bases.getElement(a_baseId)).exportHangar().getElement(a_droneId)).droneType()
+                        .equals("swarm"))) { // Checks if swarm exists in base
+            l_toReturn = 2;
+        } else {
+            Swarm l_drone = ((Swarm) ((Base) i_bases.getElement(a_baseId)).exportHangar().getElement(a_droneId));
+            Iterator l_payload = l_drone.exportIte();
+            Base l_base = (Base)i_bases.getElement(a_baseId);
+            Hangar l_hangar = l_base.exportHangar();
+            l_payload.reset();
+            while(l_payload.hasNext()){
+                l_hangar.addElement(l_payload.next());
+            }
+            l_hangar.removeElement(a_droneId);
+            l_toReturn = 0;
+        }}
+        return l_toReturn;
     }
 
     public int addOrder(String a_baseName, String a_orderId, int a_dimension, Location a_coords) {

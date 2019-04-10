@@ -53,6 +53,8 @@ public interface Tower {
 
     int makeSwarm(String a_baseId, String a_swarmId, String[] a_drones);
 
+    int disband(String a_baseId, String a_droneId);
+
     Iterator exportIte(String a_toExportName);
 
     Object extraError();

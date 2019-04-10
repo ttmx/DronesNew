@@ -57,4 +57,48 @@ The service bay is empty!
 Expo [2345,-12]
 Hangar: [gru01 50 130, gru02 60 50, sw02 110 120]
 The service bay is empty!
+> Drone Lili06 created.
+> Drone Lili07 created.
+> Drone Lili08 created.
+> Base Mojito does not exist!
+> Base Mojito does not exist!
+> Base Mojito does not exist!
+> Swarm must have at least two drones!
+> Cannot add drone Lili06 twice!
+> Cannot add drone Lili07 twice!
+> Cannot add drone Lili06 twice!
+> Cannot add hermit drone gru02!
+> Drone Lili01 is not available in this base!
+> Montijo [0,0]
+Hangar: [Lili02 50 100]
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+Hangar: [Lili01 20 200]
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+Hangar: [gru01 50 130, gru02 60 50, sw02 110 120, Lili06 40 130, Lili07 40 130, Lili08 40 130]
+The service bay is empty!
+> Swarm sw02 already exists!
+> Swarm Lili01 already exists!
+> Montijo [0,0]
+Hangar: [Lili02 50 100]
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+Hangar: [Lili01 20 200]
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+Hangar: [gru01 50 130, gru02 60 50, sw02 110 120, Lili06 40 130, Lili07 40 130, Lili08 40 130]
+The service bay is empty!
 > Bye!
