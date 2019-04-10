@@ -84,4 +84,7 @@ public class DroneClass implements Drone, ManagedObject {
     public void removeFuel(int i_delta){
         i_fuel -= i_delta;
     }
+    public void refuel(){
+        i_fuel = i_range;
+    }
 }

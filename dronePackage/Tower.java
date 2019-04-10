@@ -61,4 +61,8 @@ public interface Tower {
 
     void tictac(int a_delta);
 
+    Iterator inTransit();
+
+    int getTick();
+
 }

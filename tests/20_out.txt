@@ -1,0 +1,233 @@
+> > Base Sacavem created at [234,432].
+> Base Outro sitio qualquer created at [-32,-44].
+> Base Olivais created at [-23,44].
+> Base Expo created at [2345,-12].
+> Base Cascais created at [0,0].
+> Base Sintra created at [30,40].
+> Drone Lili01 created.
+> Drone Lili02 created.
+> Drone Lili03 created.
+> Drone Lili04 created.
+> Drone Gru01 created.
+> Drone Gru02 created.
+> Drone Bernardo01 created.
+> Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200, Gru01 100 100]
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+Hangar: [Lili03 30 150, Lili04 20 90]
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+The hangar is empty!
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> There are no pending orders!
+> Order queued for delivery.
+> Order queued for delivery.
+> Order queued for delivery.
+> Order queued for delivery.
+> Order queued for delivery.
+> Orders in Sacavem:
+Order01; 20; [250,450]
+Order03; 15; [230,440]
+There are no pending orders in Outro sitio qualquer.
+Orders in Olivais:
+Order02; 10; [20,50]
+Order05; 1200; [20,55]
+There are no pending orders in Expo.
+There are no pending orders in Cascais.
+Orders in Sintra:
+Order04; 15; [232,442]
+> No orders delivered so far!
+> Lili03 will deliver Order02.
+> Orders in Sacavem:
+Order01; 20; [250,450]
+Order03; 15; [230,440]
+There are no pending orders in Outro sitio qualquer.
+Orders in Olivais:
+Order05; 1200; [20,55]
+There are no pending orders in Expo.
+There are no pending orders in Cascais.
+Orders in Sintra:
+Order04; 15; [232,442]
+> Order04 is too far for Gru02!
+> Base Cintra does not exist!
+> ThisIsNotADrone is not at Sacavem!
+> Order03 is not pending!
+> Order04 is too far for Gru02!
+> Lili03 is not at Olivais!
+> Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200, Gru01 100 100]
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+Hangar: [Lili04 20 90]
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+The hangar is empty!
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> Lili03 Olivais Olivais 0 87 delivery!
+> > No orders delivered so far!
+> Lili03 Olivais Olivais 10 87 delivery!
+> > Gru01 will deliver Order03.
+> No orders delivered so far!
+> Lili03 Olivais Olivais 30 87 delivery!
+Gru01 Sacavem Sacavem 0 18 delivery!
+> > 8 Order03 Sacavem.
+12 Order02 Olivais.
+> No drones are flying!
+> Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200, Gru01 100 82]
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+Hangar: [Lili04 20 90, Lili03 30 63]
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+The hangar is empty!
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> Gru01 moved to service bay.
+> Lili04 moved to service bay.
+Lili03 moved to service bay.
+> Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200]
+Service bay: [Gru01 100 82]
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+Service bay: [Lili04 20 90, Lili03 30 63]
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+The hangar is empty!
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> > Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200, Gru01 100 100]
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+Hangar: [Lili04 20 90, Lili03 30 150]
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+The hangar is empty!
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> No drones are flying!
+> hugeFleet created.
+> Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200, Gru01 100 100]
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+Hangar: [hugeFleet 50 90]
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+The hangar is empty!
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> hugeFleet flying from Olivais to Cascais.
+> hugeFleet Olivais Cascais 0 50 relocation!
+> > hugeFleet Olivais Cascais 40 50 relocation!
+> > No drones are flying!
+> Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200, Gru01 100 100]
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+Hangar: [hugeFleet 50 40]
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> hugeFleet disbanded.
+> Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200, Gru01 100 100]
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+Hangar: [Lili04 20 40, Lili03 30 100]
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> Lili04 moved to service bay.
+Lili03 moved to service bay.
+> Sacavem [234,432]
+Hangar: [Lili01 10 100, Lili02 20 200, Gru01 100 100]
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+Cascais [0,0]
+The hangar is empty!
+Service bay: [Lili04 20 40, Lili03 30 100]
+Sintra [30,40]
+Hangar: [Gru02 10 100, Bernardo01 50 500]
+The service bay is empty!
+> Bye!

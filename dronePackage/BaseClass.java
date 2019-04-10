@@ -39,11 +39,11 @@ public class BaseClass implements Base, ManagedObject {
     }
 
     public void moveToServiceBay(String a_droneId) {
-        i_serviceBay.addElement(i_hangar.getElement(a_droneId));
+        i_hangar.moveTo(a_droneId, i_serviceBay);
     }
 
     public void moveToHangar(String a_droneId) {
-        i_hangar.addElement(i_serviceBay.getElement(a_droneId));
+        i_serviceBay.moveTo(a_droneId, i_hangar);
     }
 
     @Override

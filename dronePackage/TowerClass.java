@@ -106,13 +106,24 @@ public class TowerClass implements Tower {
 
     public int moveToServiceBay(String a_baseName, int a_droneRange) {
         int l_Result;
-        i_drones.reset();
-        if (i_bases.IdExists(a_baseName)) {
-            if (i_drones.hasNext()) {
-                l_Result = 0;
-            }
+        if (!i_bases.IdExists(a_baseName)) {
             l_Result = 1;
-        } else {
+        }else {
+            Base l_base =(Base)i_bases.getElement(a_baseName);
+            l_base.exportHangar().reset();
+            Iterator l_exportIte = new IteratorClass();
+            while(l_base.exportHangar().hasNext()){
+                DroneClass l_drone = (DroneClass)l_base.exportHangar().next();
+                if(l_drone.getFuel()<a_droneRange){
+                    l_exportIte.addElement(l_drone);
+                    l_base.moveToServiceBay(l_drone.getObjectID());
+                    i_fc.createService(a_baseName,l_drone.getObjectID());
+                }
+            }
+            i_extraError = l_exportIte;
+            l_Result = 0;
+        }
+        if(((Iterator)i_extraError).length()==0){
             l_Result = 2;
         }
         return l_Result;
@@ -303,7 +314,7 @@ public class TowerClass implements Tower {
         } else if (!(a_dimension > 0)) {
             l_Result = 3; // a_dimension is not a positive integer
         } else {
-            OrderClass l_add = new OrderClass(a_orderId, a_dimension, a_coords);
+            OrderClass l_add = new OrderClass(a_orderId, a_dimension, a_coords, a_baseName);
             ((Base) i_bases.getElement(a_baseName)).addOrder(l_add);
             i_orders.addElement(l_add);
             l_Result = 0;
@@ -336,7 +347,7 @@ public class TowerClass implements Tower {
         return l_Return;
     }
 
-    public String inTransit() {
+    public Iterator inTransit() {
         /*
          * String l_toPrint = ""; while(i_drones.hasNext()) { if(((Drone)
          * i_drones.next()).isFlying()) { if(((Drone) i_drones.next()).droneType() == 0)
@@ -346,9 +357,12 @@ public class TowerClass implements Tower {
          * 
          * } } return l_toPrint;
          */
-        return null;
+        return i_fc.exportFlight();
     }
-
+    public int getTick(){
+        return i_fc.getTick();
+    }
+    // hacky fix for outputting multiple objects
     public Object extraError() {
         return i_extraError;
     }
@@ -367,6 +381,10 @@ public class TowerClass implements Tower {
             break;
         case "orders":
             a_toExport = i_orders;
+            break;
+        case "doneOrders":
+            a_toExport = i_fc.exportDone();
+            break;
         }
         return a_toExport;
     }

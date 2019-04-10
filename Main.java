@@ -87,13 +87,13 @@ public class Main {
                 deliverFunction(a_scan, a_tower);
                 break;
             case DELIVERED:
-                deliveredFunction(a_scan);
+                deliveredFunction(a_scan, a_tower);
                 break;
             case INTRANSIT:
-                intransitFunction(a_scan);
+                intransitFunction(a_scan, a_tower);
                 break;
             case TICTAC:
-                tictacFunction(a_scan,a_tower);
+                tictacFunction(a_scan, a_tower);
                 break;
             case EXIT:
                 exitFunction();
@@ -166,12 +166,16 @@ public class Main {
         int l_Return = a_tower.moveToServiceBay(a_baseName, a_range);
         switch (l_Return) {
         case 0:
-            System.out.println();
-            break;
-        case 1:
-            System.out.println("No drones were sent to the service station!");
+            Iterator l_ite = (Iterator)a_tower.extraError();
+            l_ite.reset();
+            while(l_ite.hasNext()){
+                System.out.println(l_ite.next().getObjectID()+" moved to service bay.");
+            }
             break;
         case 2:
+            System.out.println("No drones were sent to the service station!");
+            break;
+        case 1:
             System.out.println("Base " + a_baseName + " does not exist!");
             break;
         }
@@ -376,16 +380,37 @@ public class Main {
         }
     }
 
-    public static void deliveredFunction(Scanner a_scan) {
+    public static void deliveredFunction(Scanner a_scan, Tower a_tower) {
+    Iterator l_orderIte = a_tower.exportIte("doneOrders");
+    l_orderIte.reset();
+    if (l_orderIte.hasNext()) {
+        while (l_orderIte.hasNext()) {
+            OrderClass l_order = ((OrderClass) l_orderIte.next());
+            System.out.println(l_order.getCompTime() + " " +  l_order.getI_orderID() + " " + l_order.getI_baseName() +  ".");
+        } 
+        } else {
+        System.out.println("No orders delivered so far!");
+    }
 
     }
 
-    public static void intransitFunction(Scanner a_scan) {
-
+    public static void intransitFunction(Scanner a_scan, Tower a_tower) {
+        Iterator l_it = a_tower.inTransit();
+        int l_tick = a_tower.getTick();
+        l_it.reset();
+        if (l_it.hasNext()) {
+            while (l_it.hasNext()) {
+                FlightPattern l_fp = (FlightPattern) l_it.next();
+                System.out.println(l_fp.droneId() + " " + l_fp.getOrigin() + " " + l_fp.getDestination() + " "
+                        + l_fp.coveredDistance(l_tick) + " " + l_fp.totalDistance() + " " + l_fp.type() + "!");
+            }
+        } else {
+            System.out.println("No drones are flying!");
+        }
     }
 
     // the fastest yikes in the west
-    public static void tictacFunction(Scanner a_scan,Tower a_tower) {
+    public static void tictacFunction(Scanner a_scan, Tower a_tower) {
         int l_delta = a_scan.nextInt();
         a_scan.nextLine();
         a_tower.tictac(l_delta);

@@ -5,12 +5,14 @@ public class OrderClass implements Order, ManagedObject {
     private int i_dimension;
     private Location i_coords;
     private boolean i_delivered;
-
-    public OrderClass(String a_orderID, int a_dimension, Location a_coords) {
+    private String i_baseName;
+    private int i_compTime;
+    public OrderClass(String a_orderID, int a_dimension, Location a_coords, String a_baseName) {
         i_orderID = a_orderID;
         i_dimension = a_dimension;
         i_coords = a_coords;
         i_delivered = false;
+        i_baseName = a_baseName;
     }
 
     public String getObjectID() {
@@ -52,6 +54,13 @@ public class OrderClass implements Order, ManagedObject {
         return i_coords;
     }
 
+        /**
+     * @return the i_baseName
+     */
+    public String getI_baseName() {
+    return i_baseName;    
+    }
+
     /**
      * @param i_coords the i_coords to set
      */
@@ -70,5 +79,11 @@ public class OrderClass implements Order, ManagedObject {
 
     public boolean isDelivered() {
         return i_delivered;
+    }
+    public void setCompleteTick(int a_tick){
+        i_compTime = a_tick;
+    }
+    public int getCompTime(){
+        return i_compTime;
     }
 }
