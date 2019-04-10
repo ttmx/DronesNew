@@ -93,7 +93,7 @@ public class Main {
                 intransitFunction(a_scan);
                 break;
             case TICTAC:
-                tictacFunction(a_scan);
+                tictacFunction(a_scan,a_tower);
                 break;
             case EXIT:
                 exitFunction();
@@ -384,8 +384,11 @@ public class Main {
 
     }
 
-    public static void tictacFunction(Scanner a_scan) {
-
+    // the fastest yikes in the west
+    public static void tictacFunction(Scanner a_scan,Tower a_tower) {
+        int l_delta = a_scan.nextInt();
+        a_scan.nextLine();
+        a_tower.tictac(l_delta);
     }
 
     public static void exitFunction() {

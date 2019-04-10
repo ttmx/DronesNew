@@ -85,8 +85,8 @@ public class IteratorClass implements Iterator {
 			for (int i = l_objIndex + 1; i < i_length; i++) {
 				i_objects[i-1]=i_objects[i];
 			}
+			i_length--;
 		}
-		i_length--;
 		reset();
 		return l_exists;
 	}

@@ -14,7 +14,7 @@ public class TowerClass implements Tower {
         i_drones = new IteratorClass();
         i_orders = new IteratorClass();
         i_swarms = new IteratorClass();
-        i_fc = new FlightControl();
+        i_fc = new FlightControl(this);
     }
 
     @Override
@@ -172,6 +172,7 @@ public class TowerClass implements Tower {
             ((Drone) i_drones.getElement(a_droneId)).goSwitchBaseroo();
             ((Base) i_bases.getElement(a_destinationBaseId)).addDrone(((DroneClass) i_drones.getElement(a_droneId)));
             ((Base) i_bases.getElement(a_originBaseId)).flyToBase(a_droneId);
+            i_fc.newFlight(a_originBaseId, a_droneId, a_destinationBaseId,Base2BaseDistance(a_originBaseId, a_destinationBaseId));
             l_Result = 0;
         }
         return l_Result;
@@ -318,17 +319,20 @@ public class TowerClass implements Tower {
             l_Return = 1;
         } else if (!((Base) i_bases.getElement(a_originBaseId)).droneIdExists(a_droneId)) {
             l_Return = 2;
-        } else if (i_orders.length() == 0) {
+        } else if (!i_orders.IdExists(a_orderId)) {
             l_Return = 3;
         } else if (((Base) i_bases.getElement(a_originBaseId)).getCoords().distanceTo(
-                ((OrderClass) i_orders.getElement(a_orderId)).getI_coords()) >= ((Drone) i_drones.getElement(a_droneId))
+                ((OrderClass) i_orders.getElement(a_orderId)).getI_coords())*2 >= ((Drone) i_drones.getElement(a_droneId))
                         .getFuel()) {
             l_Return = 4;
         } else if (((OrderClass) i_orders.getElement(a_orderId))
                 .getI_dimension() > ((Drone) i_drones.getElement(a_droneId)).getCapacity()) {
             l_Return = 5;
         } else {
-            ((Drone) i_drones.getElement(a_droneId)).goDeliveroo();
+            Drone l_drone = (Drone)i_drones.getElement(a_droneId);
+            l_drone.goDeliveroo();
+            int l_distance = ((Base) i_bases.getElement(a_originBaseId)).getCoords().distanceTo(((OrderClass) i_orders.getElement(a_orderId)).getI_coords());
+            i_fc.newFlight(a_originBaseId, a_droneId, a_originBaseId, l_distance*2,(OrderClass)i_orders.getElement(a_orderId));
             l_Return = 0;
         }
         return l_Return;
@@ -367,5 +371,9 @@ public class TowerClass implements Tower {
             a_toExport = i_orders;
         }
         return a_toExport;
+    }
+    //The word tictac has given me PTSD, flashbacks from vietnam somehow appear in my head whenever I hear it. I was never in vietnam.
+    public void tictac(int a_delta){
+        i_fc.tictac(a_delta);
     }
 }

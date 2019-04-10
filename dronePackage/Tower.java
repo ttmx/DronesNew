@@ -59,4 +59,6 @@ public interface Tower {
 
     Object extraError();
 
+    void tictac(int a_delta);
+
 }

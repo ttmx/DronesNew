@@ -4,17 +4,18 @@ public class OrderClass implements Order, ManagedObject {
     private String i_orderID;
     private int i_dimension;
     private Location i_coords;
+    private boolean i_delivered;
 
     public OrderClass(String a_orderID, int a_dimension, Location a_coords) {
         i_orderID = a_orderID;
         i_dimension = a_dimension;
         i_coords = a_coords;
+        i_delivered = false;
     }
 
     public String getObjectID() {
         return i_orderID;
     }
-
 
     /**
      * @return the i_orderID
@@ -59,7 +60,15 @@ public class OrderClass implements Order, ManagedObject {
     }
 
     public String prettyPrint() {
-    String l_toReturn = getObjectID() + "; " + getI_dimension() + "; " + getI_coords().prettyCoords();
-    return l_toReturn;
+        String l_toReturn = getObjectID() + "; " + getI_dimension() + "; " + getI_coords().prettyCoords();
+        return l_toReturn;
+    }
+
+    public void done(){
+        i_delivered = true;
+    }
+
+    public boolean isDelivered() {
+        return i_delivered;
     }
 }

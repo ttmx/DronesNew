@@ -78,4 +78,7 @@ public class DroneClass implements Drone, ManagedObject {
     public String droneType() {
         return i_droneType;
     }
+    public void land(){
+        i_isFlying = false;
+    }
 }

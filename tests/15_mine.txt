@@ -16,21 +16,18 @@ The service bay is empty!
 > Gru01 flying from Sintra to Cascais.
 > Lili04 flying from Cascais to Sintra.
 > Cascais [0,0]
-Hangar: [Lili01 10 100, Lili02 20 200, Lili03 30 150, Lili04 20 90, Gru01 100 100]
+Hangar: [Lili01 10 100, Lili02 20 200, Lili03 30 150, Gru01 100 100]
 The service bay is empty!
 Sintra [30,40]
-Hangar: [Gru01 100 100, Gru02 100 100, Bernardo01 50 500, Lili04 20 90]
+Hangar: [Gru02 100 100, Bernardo01 50 500, Lili04 20 90]
 The service bay is empty!
-> > > Unknown command. Type help to see available commands.
-> > > Unknown command. Type help to see available commands.
-> Gru01 flying from Sintra to Cascais.
+> > > > > Gru01 is not at Sintra!
 > > Source base Cintra does not exist!
 > > Target base Mascais does not exist!
-> > > Unknown command. Type help to see available commands.
-> > Cascais [0,0]
-Hangar: [Lili01 10 100, Lili02 20 200, Lili03 30 150, Lili04 20 90, Gru01 100 100]
+> > > > Cascais [0,0]
+Hangar: [Lili01 10 100, Lili02 20 200, Lili03 30 150, Gru01 100 100]
 The service bay is empty!
 Sintra [30,40]
-Hangar: [Gru01 100 100, Gru02 100 100, Bernardo01 50 500, Lili04 20 90]
+Hangar: [Gru02 100 100, Bernardo01 50 500, Lili04 20 90]
 The service bay is empty!
 > Bye!
