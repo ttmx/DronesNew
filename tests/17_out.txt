@@ -1,0 +1,33 @@
+> Base Cascais created at [0,0].
+> Base Sintra created at [30,40].
+> Drone Lili01 created.
+> Drone Lili02 created.
+> Drone Lili03 created.
+> Drone Lili04 created.
+> Drone Gru01 created.
+> Drone Gru02 created.
+> Drone Bernardo01 created.
+> Cascais [0,0]
+Hangar: [Lili01 10 100, Lili02 20 200, Lili03 30 150, Lili04 20 90]
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru01 100 100, Gru02 100 100, Bernardo01 50 500]
+The service bay is empty!
+> Lili01 moved to service bay.
+Lili04 moved to service bay.
+> Cascais [0,0]
+Hangar: [Lili02 20 200, Lili03 30 150]
+Service bay: [Lili01 10 100, Lili04 20 90]
+Sintra [30,40]
+Hangar: [Gru01 100 100, Gru02 100 100, Bernardo01 50 500]
+The service bay is empty!
+> Base A base that does not exist does not exist!
+> Base Neverwhere does not exist!
+> No drones were sent to the service station!
+> Cascais [0,0]
+Hangar: [Lili02 20 200, Lili03 30 150]
+Service bay: [Lili01 10 100, Lili04 20 90]
+Sintra [30,40]
+Hangar: [Gru01 100 100, Gru02 100 100, Bernardo01 50 500]
+The service bay is empty!
+> Bye!

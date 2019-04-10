@@ -1,0 +1,44 @@
+> Base Cascais created at [0,0].
+> Base Sintra created at [30,40].
+> Drone Lili01 created.
+> Drone Lili02 created.
+> Drone Lili03 created.
+> Drone Lili04 created.
+> Drone Gru01 created.
+> Drone Gru02 created.
+> Drone Bernardo01 created.
+> Cascais [0,0]
+Hangar: [Lili01 10 100, Lili02 20 200, Lili03 30 150, Lili04 20 90]
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru01 100 100, Gru02 100 100, Bernardo01 50 500]
+The service bay is empty!
+> Gru01 flying from Sintra to Cascais.
+> Lili04 flying from Cascais to Sintra.
+> Cascais [0,0]
+Hangar: [Lili01 10 100, Lili02 20 200, Lili03 30 150]
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 100 100, Bernardo01 50 500]
+The service bay is empty!
+> Gru01 Sintra Cascais 0 50 relocation!
+Lili04 Cascais Sintra 0 50 relocation!
+> > Gru01 Sintra Cascais 10 50 relocation!
+Lili04 Cascais Sintra 10 50 relocation!
+> > Gru01 is not at Sintra!
+> Gru01 Sintra Cascais 40 50 relocation!
+Lili04 Cascais Sintra 40 50 relocation!
+> Source base Cintra does not exist!
+> Gru01 Sintra Cascais 40 50 relocation!
+Lili04 Cascais Sintra 40 50 relocation!
+> Target base Mascais does not exist!
+> Gru01 Sintra Cascais 40 50 relocation!
+Lili04 Cascais Sintra 40 50 relocation!
+> > No drones are flying!
+> Cascais [0,0]
+Hangar: [Lili01 10 100, Lili02 20 200, Lili03 30 150, Gru01 100 50]
+The service bay is empty!
+Sintra [30,40]
+Hangar: [Gru02 100 100, Bernardo01 50 500, Lili04 20 40]
+The service bay is empty!
+> Bye!

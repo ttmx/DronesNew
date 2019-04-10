@@ -1,7 +1,7 @@
 package dronePackage;
 import java.lang.Math;
 
-// Sendo que locais sao super basicos nao é relevante fazer uma interface é irrelevante
+// Class for locations with helpful function
 public class Location {
     int i_lat;
     int i_long;

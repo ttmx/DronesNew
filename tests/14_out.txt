@@ -1,0 +1,73 @@
+> Base Montijo created at [0,0].
+> Base Sacavem created at [234,432].
+> Base Outro sitio qualquer created at [-32,-44].
+> Base Olivais created at [-23,44].
+> Base Expo created at [2345,-12].
+> Drone Lili01 created.
+> Drone Lili02 created.
+> Drone Lili03 created.
+> Drone gru01 created.
+> Drone gru02 created.
+> Drone Lili04 created.
+> Montijo [0,0]
+Hangar: [Lili02 50 100]
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+Hangar: [Lili01 20 200]
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+Hangar: [Lili03 30 120, gru01 50 130, gru02 60 50, Lili04 40 130]
+The service bay is empty!
+> sw01 created.
+> Drone Lili05 created.
+> Lili03
+Lili04
+70 120
+> sw02 created.
+> Lili03
+Lili04
+Lili05
+110 120
+> sw02 disbanded.
+> Montijo [0,0]
+Hangar: [Lili02 50 100]
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+Hangar: [Lili01 20 200]
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+Hangar: [gru01 50 130, gru02 60 50, Lili03 30 120, Lili04 40 130, Lili05 40 130]
+The service bay is empty!
+> swarmie created.
+> Lili04
+Lili03
+70 120
+> swarmie disbanded.
+> Montijo [0,0]
+Hangar: [Lili02 50 100]
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+Hangar: [Lili01 20 200]
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+Hangar: [gru01 50 130, gru02 60 50, Lili05 40 130, Lili04 40 130, Lili03 30 120]
+The service bay is empty!
+> Bye!

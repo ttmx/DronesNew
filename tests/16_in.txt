@@ -1,0 +1,58 @@
+base
+0 0 Cascais
+base
+30 40 Sintra
+drone
+Lili01
+Cascais
+sociable 10 100
+drone
+Lili02
+Cascais
+sociable 20 200
+drone
+Lili03
+Cascais
+sociable 30 150
+drone
+Lili04
+Cascais
+sociable 20 90
+drone
+Gru01
+Sintra
+hermit 100 100
+drone
+Gru02
+Sintra
+hermit 100 100
+drone
+Bernardo01
+Sintra
+sociable 50 500
+listBases
+flyToBase
+Sintra
+Gru01
+Cascais
+flyToBase
+Cascais
+Lili04
+Sintra
+listBases
+inTransit
+tictac
+1
+inTransit
+tictac
+3
+flyToBase
+Sintra
+Gru02
+Cascais
+inTransit
+tictac
+1
+inTransit
+listBases
+exit

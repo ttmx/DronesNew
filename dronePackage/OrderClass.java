@@ -1,7 +1,7 @@
 package dronePackage;
 
 public class OrderClass implements Order, ManagedObject {
-    private String i_baseID, i_orderID;
+    private String i_orderID;
     private int i_dimension;
     private Location i_coords;
 
@@ -15,19 +15,6 @@ public class OrderClass implements Order, ManagedObject {
         return i_orderID;
     }
 
-    /**
-     * @return the i_baseID
-     */
-    public String getI_baseID() {
-        return i_baseID;
-    }
-
-    /**
-     * @param i_baseID the i_baseID to set
-     */
-    public void setI_baseID(String i_baseID) {
-        this.i_baseID = i_baseID;
-    }
 
     /**
      * @return the i_orderID

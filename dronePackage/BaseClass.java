@@ -12,6 +12,7 @@ public class BaseClass implements Base, ManagedObject {
         this.i_baseName = a_baseName;
         i_hangar = new Hangar();
         i_serviceBay = new ServiceBay();
+        i_orders = new IteratorClass();
     }
 
     @Override
@@ -30,19 +31,19 @@ public class BaseClass implements Base, ManagedObject {
 
     @Override
     public void createDrone(String a_droneId, String a_droneType, int a_capacity, int a_range, Tower a_tower) {
-        i_hangar.spawnDrone(a_droneId, a_droneType, a_capacity, a_range,a_tower);
+        i_hangar.spawnDrone(a_droneId, a_droneType, a_capacity, a_range, a_tower);
     }
-    
+
     public void addDrone(DroneClass drone) {
-    i_hangar.addElement(drone);    
+        i_hangar.addElement(drone);
     }
 
     public void moveToServiceBay(String a_droneId) {
-    i_serviceBay.addElement(i_hangar.getElement(a_droneId));  
+        i_serviceBay.addElement(i_hangar.getElement(a_droneId));
     }
 
     public void moveToHangar(String a_droneId) {
-    i_hangar.addElement(i_serviceBay.getElement(a_droneId));    
+        i_hangar.addElement(i_serviceBay.getElement(a_droneId));
     }
 
     @Override
@@ -53,8 +54,8 @@ public class BaseClass implements Base, ManagedObject {
     @Override
     public String servicePrint() {
         if (i_serviceBay.length() > 0) {
-            return "Service bay: "+i_serviceBay.prettyList();
-        }else{
+            return "Service bay: " + i_serviceBay.prettyList();
+        } else {
             return "The service bay is empty!";
         }
     }
@@ -62,30 +63,31 @@ public class BaseClass implements Base, ManagedObject {
     @Override
     public String hangarPrint() {
         if (i_hangar.length() > 0) {
-            return "Hangar: "+i_hangar.prettyList();
-        }else{
+            return "Hangar: " + i_hangar.prettyList();
+        } else {
             return "The hangar is empty!";
         }
     }
 
-    public void addOrder(OrderClass a_order)  {
+    public void addOrder(OrderClass a_order) {
         i_orders.addElement(a_order);
-   }
+    }
 
     @Override
     public void flyToBase(String a_droneId) {
 
     }
-    
+
     public String listOrders() {
         i_orders.reset();
         String l_toReturn = "";
         while (i_orders.hasNext()) {
-            l_toReturn += ((OrderClass) i_orders.next()).prettyPrint() + "\n";
+            l_toReturn += ((OrderClass) i_orders.next()).prettyPrint()+"\n";
         }
-        return l_toReturn;    
+        return l_toReturn;
     }
-    public Hangar exportHangar(){
+
+    public Hangar exportHangar() {
         return i_hangar;
     }
 

@@ -14,7 +14,7 @@ public class Main {
     private static final String LISTDRONES = "listdrones";
     private static final String FLYTOBASE = "flytobase";
     private static final String ADDORDER = "addorder";
-    private static final String ORDER = "order";
+    private static final String ORDER = "orders";
     private static final String ALLORDERS = "allorders";
     private static final String DELIVER = "deliver";
     private static final String DELIVERED = "delivered";
@@ -192,6 +192,8 @@ public class Main {
         int errorCode = a_tower.makeSwarm(l_base, l_swarmId, l_strArr);
         switch (errorCode) {
         case 0:
+            
+            System.out.println(l_swarmId + " created.");
             break;
         case 1:
             System.out.println("Base " + l_base + " does not exist!");
@@ -229,7 +231,7 @@ public class Main {
             while (l_droneIte.hasNext()) {
                 System.out.println(l_droneIte.next().getObjectID());
             }
-        }else{
+        } else {
             System.out.println("There are no drones!");
         }
     }
@@ -267,7 +269,7 @@ public class Main {
         int l_Return = a_tower.addOrder(a_baseName, a_orderId, a_dimension, l_coords);
         switch (l_Return) {
         case 0:
-            System.out.println("Order qeued for delivery.");
+            System.out.println("Order queued for delivery.");
             break;
         case 1:
             System.out.println("Source base " + a_baseName + " does not exist!");
@@ -283,15 +285,65 @@ public class Main {
 
     public static void orderFunction(Scanner a_scan, Tower a_tower) {
         String a_baseName = a_scan.nextLine();
-        System.out.println(a_tower.listOrders(a_baseName));
+        String l_toPrint = "";
+        Iterator i_bases = a_tower.exportIte("bases");
+        if (i_bases.IdExists(a_baseName) && ((Base) i_bases.getElement(a_baseName)).getOrderLength() > 0) {
+            l_toPrint = ((Base) i_bases.getElement(a_baseName)).listOrders();
+        } else if (i_bases.IdExists(a_baseName) && ((Base) i_bases.getElement(a_baseName)).getOrderLength() == 0) {
+            l_toPrint = "There are no pending orders!";
+        } else {
+            l_toPrint = "Base " + a_baseName + " does not exist!";
+        }
+        System.out.print(l_toPrint);
     }
 
     public static void allordersFunction(Scanner a_scan, Tower a_tower) {
-        System.out.println(a_tower.listAllOrders());
+        Iterator l_bases = a_tower.exportIte("bases");
+        Iterator l_orders = a_tower.exportIte("orders");
+        String l_toPrint = "";
+        if (!(l_orders.length() == 0)) {
+            l_bases.reset();
+            while (l_bases.hasNext()) {
+                Base l_base = (Base)l_bases.next();
+                if(l_base.getOrderLength()>0)
+                l_toPrint += "Orders in " + l_base.getBaseName() + ":" + "\n";
+                if (l_base.getOrderLength() > 0) {
+                    l_toPrint += l_base.listOrders();
+                } else {
+                    l_toPrint += "There are no pending orders in " + l_base.getBaseName() + "." + "\n";
+                }
+            }
+        } else {
+            l_toPrint = "There are no pending orders!\n";
+        }
+        System.out.print(l_toPrint);
     }
 
     public static void deliverFunction(Scanner a_scan, Tower a_tower) {
-
+        String a_originBaseId = a_scan.nextLine();
+        String a_droneId = a_scan.nextLine();
+        String a_orderId = a_scan.nextLine();
+        int l_Result = a_tower.deliverOrders(a_originBaseId, a_droneId, a_orderId);
+        switch (l_Result) {
+        case 0:
+            System.out.println(a_droneId + " will deliver " + a_orderId + ".");
+            break;
+        case 1:
+            System.out.println("Base " + a_originBaseId + " does not exist!");
+            break;
+        case 2:
+            System.out.println(a_droneId + " is not at " + a_originBaseId + "!");
+            break;
+        case 3:
+            System.out.println(a_orderId + " is not pending!");
+            break;
+        case 4:
+            System.out.println(a_orderId + " is too far for " + a_droneId + "!");
+            break;
+        case 5:
+            System.out.println(a_orderId + " is too heavy for " + a_droneId + "!");
+            break;
+        }
     }
 
     public static void deliveredFunction(Scanner a_scan) {

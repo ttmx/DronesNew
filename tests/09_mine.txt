@@ -1,0 +1,33 @@
+> Base Montijo created at [0,0].
+> Base Sacavem created at [234,432].
+> Base Outro sitio qualquer created at [-32,-44].
+> Base Olivais created at [-23,44].
+> Base Expo created at [2345,-12].
+> Montijo [0,0]
+The hangar is empty!
+The service bay is empty!
+Sacavem [234,432]
+The hangar is empty!
+The service bay is empty!
+Outro sitio qualquer [-32,-44]
+The hangar is empty!
+The service bay is empty!
+Olivais [-23,44]
+The hangar is empty!
+The service bay is empty!
+Expo [2345,-12]
+The hangar is empty!
+The service bay is empty!
+> Order queued for delivery.
+> Base Freixo de espada a cinta does not exist!
+> Order queued for delivery.
+> Order queued for delivery.
+> Order queued for delivery.
+> Order queued for delivery.
+> Order01; 20; [250,450]
+Order03; 15; [230,440]
+Order04; 15; [232,442]
+> Order02; 10; [20,50]
+Order05; 12; [20,55]
+> Base Odiaxere does not exist!
+> Bye!

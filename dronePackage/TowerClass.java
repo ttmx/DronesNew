@@ -167,6 +167,7 @@ public class TowerClass implements Tower {
             l_Result = 4; // a_droneId does not have capacity to fly from a_OriginBase to
                           // a_DestinationBase
         } else {
+            ((Drone) i_drones.getElement(a_droneId)).goSwitchBaseroo();
             ((Base) i_bases.getElement(a_destinationBaseId)).addDrone(((DroneClass) i_drones.getElement(a_droneId)));
             ((Base) i_bases.getElement(a_originBaseId)).flyToBase(a_droneId);
             l_Result = 0;
@@ -213,7 +214,8 @@ public class TowerClass implements Tower {
 
                     // Special order of operations lets second condition only be run if a drone does
                     // exist
-                    if ((!l_base.droneIdExists(a_drones[i]))|| ((Drone) l_base.exportHangar().getElement(a_drones[i])).isFlying()) {
+                    if ((!l_base.droneIdExists(a_drones[i]))
+                            || ((Drone) l_base.exportHangar().getElement(a_drones[i])).isFlying()) {
                         i_extraError = a_drones[i];
                         l_unavailable = true;
                         break;
@@ -239,55 +241,37 @@ public class TowerClass implements Tower {
         Iterator l_toStickIn = new IteratorClass();
 
         for (int i = 0; i < a_drones.length; i++) {
-            l_hangar.moveTo(a_drones[i], l_toStickIn);
+            if (!(((DroneClass) l_hangar.getElement(a_drones[i])).droneType().equals("swarm"))) {
+                l_hangar.moveTo(a_drones[i], l_toStickIn);
+            }else{
+                Swarm l_swarmyBoy = (Swarm) l_hangar.getElement(a_drones[i]);
+                l_swarmyBoy.exportIte().reset();
+                while(l_swarmyBoy.exportIte().hasNext()){
+                    l_toStickIn.addElement(l_swarmyBoy.exportIte().next());
+                }
+            }
         }
-        Swarm l_swarm = new Swarm(l_toStickIn,a_swarmId);
+        l_hangar.reset();
+        Swarm l_swarm = new Swarm(l_toStickIn, a_swarmId);
         i_swarms.addElement(l_swarm);
+        l_hangar.addElement(l_swarm);
     }
 
     public int addOrder(String a_baseName, String a_orderId, int a_dimension, Location a_coords) {
         int l_Result;
-        if(!i_bases.IdExists(a_baseName)) {
+        if (!i_bases.IdExists(a_baseName)) {
             l_Result = 1; // a_baseName does not exist
-        } else if(i_orders.IdExists(a_orderId)) {
-            l_Result = 2; // a_orderId already exists   
-        } else if(!(a_dimension > 0)) {
+        } else if (i_orders.IdExists(a_orderId)) {
+            l_Result = 2; // a_orderId already exists
+        } else if (!(a_dimension > 0)) {
             l_Result = 3; // a_dimension is not a positive integer
         } else {
             OrderClass l_add = new OrderClass(a_orderId, a_dimension, a_coords);
             ((Base) i_bases.getElement(a_baseName)).addOrder(l_add);
+            i_orders.addElement(l_add);
             l_Result = 0;
         }
         return l_Result;
-    }
-
-    public String listOrders(String a_baseName) {
-        String l_toPrint = "";
-        if (i_bases.IdExists(a_baseName) && ((Base) i_bases.next()).getOrderLength() > 0) {
-            l_toPrint = ((Base) i_bases.getElement(a_baseName)).listOrders();
-        } else if(i_bases.IdExists(a_baseName) && ((Base) i_bases.next()).getOrderLength() == 0) {
-            l_toPrint = "There are no pending orders!";
-        } else {
-            l_toPrint = "Base " + a_baseName + " does not exist!";
-        }
-        return l_toPrint;
-    }
-
-    public String listAllOrders() {
-    String l_toPrint = "";
-    if(!(i_orders.length() == 0)) {
-    while(i_bases.hasNext()) {
-    l_toPrint += "Orders in " + ((Base) i_bases.next()).getBaseName() + ":" + "\n";
-    if(((Base) i_bases.next()).getOrderLength() > 0) {
-    l_toPrint += ((Base) i_bases.next()).listOrders();    
-    } else {
-    l_toPrint += "There are no pending orders in " + ((Base) i_bases.next()).getBaseName() + "." + "\n";   
-    }    
-    }
-    } else {
-    l_toPrint = "There are no pending orders!";    
-    }
-    return l_toPrint;    
     }
 
     public int deliverOrders(String a_originBaseId, String a_droneId, String a_orderId) {
@@ -297,32 +281,52 @@ public class TowerClass implements Tower {
         } else if (!((Base) i_bases.getElement(a_originBaseId)).droneIdExists(a_droneId)) {
             l_Return = 2;
         } else if (i_orders.length() == 0) {
-            l_Return = 3;    
-        } else if (((Base) i_bases.getElement(a_originBaseId)).getCoords().distanceTo(((OrderClass) i_orders.getElement(a_orderId)).getI_coords()) >= ((Drone) i_drones.getElement(a_droneId)).getFuel()) {
+            l_Return = 3;
+        } else if (((Base) i_bases.getElement(a_originBaseId)).getCoords().distanceTo(
+                ((OrderClass) i_orders.getElement(a_orderId)).getI_coords()) >= ((Drone) i_drones.getElement(a_droneId))
+                        .getFuel()) {
             l_Return = 4;
-        } else if(((OrderClass) i_orders.getElement(a_orderId)).getI_dimension() > ((Drone) i_drones.getElement(a_droneId)).getCapacity()) {
+        } else if (((OrderClass) i_orders.getElement(a_orderId))
+                .getI_dimension() > ((Drone) i_drones.getElement(a_droneId)).getCapacity()) {
             l_Return = 5;
         } else {
+            ((Drone) i_drones.getElement(a_droneId)).goDeliveroo();
             l_Return = 0;
         }
-            return l_Return;
+        return l_Return;
     }
 
-    public Object extraError(){
+    public String inTransit() {
+        /*
+         * String l_toPrint = ""; while(i_drones.hasNext()) { if(((Drone)
+         * i_drones.next()).isFlying()) { if(((Drone) i_drones.next()).droneType() == 0)
+         * { l_toPrint += ((Drone) i_drones.next()).getObjectID() + " " + ((Drone)
+         * i_drones.next()) + " " + ((Drone) i_drones.next()) + " " + ((Drone)
+         * i_drones.next()) + " " + ((Drone) i_drones.next()) + } else { l_toPrint += }
+         * 
+         * } } return l_toPrint;
+         */
+        return null;
+    }
+
+    public Object extraError() {
         return i_extraError;
     }
-    public Iterator exportIte(String a_toExportName){
+
+    public Iterator exportIte(String a_toExportName) {
         Iterator a_toExport = null;
-        switch(a_toExportName){
-            case "bases":
+        switch (a_toExportName) {
+        case "bases":
             a_toExport = i_bases;
             break;
-            case "drones":
+        case "drones":
             a_toExport = i_drones;
             break;
-            case "swarms":
+        case "swarms":
             a_toExport = i_swarms;
             break;
+        case "orders":
+            a_toExport = i_orders;
         }
         return a_toExport;
     }
